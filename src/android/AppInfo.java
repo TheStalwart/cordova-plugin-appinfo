@@ -16,7 +16,7 @@ public class AppInfo extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("getAppInfo")) {
-                this.getAppInfo(callbackContext);
+                this.getAppInfo(callbackContext, args.isNull(0)?this.cordova.getActivity().getPackageName():args.getString(0));
                 return true;
         } else if (action.equals("getVersion")) {
             this.getVersion(callbackContext);
@@ -28,9 +28,8 @@ public class AppInfo extends CordovaPlugin {
         return false;
     }
 
-    private void getAppInfo(CallbackContext callbackContext){
+    private void getAppInfo(CallbackContext callbackContext, String packageName){
 
-        String packageName = this.cordova.getActivity().getPackageName();
         String versionName = "";
         String versionCode = "";
 

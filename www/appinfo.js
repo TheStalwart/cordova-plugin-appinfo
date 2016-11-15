@@ -30,9 +30,10 @@ function appInfo() {
  *
  * @param {Function} success    Callback method called on success.
  * @param {Function} fail       Callback method called on failure.
+ * @param {string} bundleId     Bundle ID of package to query.
  */
-appInfo.prototype.getAppInfo = function(success, fail){
-    exec(success, fail, 'AppInfo', 'getAppInfo', []);
+appInfo.prototype.getAppInfo = function(success, fail, bundleId){
+    exec(success, fail, 'AppInfo', 'getAppInfo', [bundleId]);
 };
 
 /**
