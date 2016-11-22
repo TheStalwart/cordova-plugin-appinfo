@@ -56,4 +56,15 @@ appInfo.prototype.getIdentifier = function(success, fail){
     exec(success, fail, 'AppInfo', 'getIdentifier', []);
 }
 
+/**
+ * Get the app installer.
+ *
+ * @param {Function} success    Callback method called on success.
+ * @param {Function} fail       Callback method called on failure.
+ */
+appInfo.prototype.getInstallerPackageName = function(success, fail){
+    exec(success, fail, 'AppInfo', 'getInstallerPackageName', []);
+}
+
 module.exports = new appInfo();
+

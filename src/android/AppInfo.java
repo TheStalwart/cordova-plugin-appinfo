@@ -24,6 +24,9 @@ public class AppInfo extends CordovaPlugin {
         } else if (action.equals("getIdentifier")) {
             this.getIdentifier(callbackContext);
             return true;
+        } else if (action.equals("getInstallerPackageName")) {
+            this.getInstallerPackageName(callbackContext);
+            return true;
         }
         return false;
     }
@@ -73,4 +76,19 @@ public class AppInfo extends CordovaPlugin {
         String packageName = this.cordova.getActivity().getPackageName();
         callbackContext.success(packageName);
     }
+
+    private void getInstallerPackageName(CallbackContext callbackContext) {
+
+        String installerPackageName;
+        String packageName = this.cordova.getActivity().getPackageName();
+        PackageManager pm = this.cordova.getActivity().getPackageManager();
+        try {
+            installerPackageName = pm.getInstallerPackageName(packageName);
+        } catch (Exception e) {
+            installerPackageName = "";
+        }
+        callbackContext.success(installerPackageName);
+
+    }
 }
+
