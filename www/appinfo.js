@@ -66,5 +66,15 @@ appInfo.prototype.getInstallerPackageName = function(success, fail){
     exec(success, fail, 'AppInfo', 'getInstallerPackageName', []);
 }
 
+/**
+ * Get System WebView User-Agent.
+ *
+ * @param {Function} success    Callback method called on success.
+ * @param {Function} fail       Callback method called on failure.
+ */
+appInfo.prototype.getSystemWebViewUserAgent = function(success, fail){
+    exec(success, fail, 'AppInfo', 'getSystemWebViewUserAgent', []);
+}
+
 module.exports = new appInfo();
 

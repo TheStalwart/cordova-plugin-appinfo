@@ -3,6 +3,7 @@ package org.scriptotek.appinfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.webkit.WebView;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -26,6 +27,9 @@ public class AppInfo extends CordovaPlugin {
             return true;
         } else if (action.equals("getInstallerPackageName")) {
             this.getInstallerPackageName(callbackContext);
+            return true;
+        } else if (action.equals("getSystemWebViewUserAgent")) {
+            this.getSystemWebViewUserAgent(callbackContext);
             return true;
         }
         return false;
@@ -88,6 +92,13 @@ public class AppInfo extends CordovaPlugin {
             installerPackageName = "";
         }
         callbackContext.success(installerPackageName);
+
+    }
+
+    private void getSystemWebViewUserAgent(CallbackContext callbackContext) {
+
+		WebView webview = new WebView(this.cordova.getActivity());
+        callbackContext.success(webview.getSettings().getUserAgentString());
 
     }
 }
