@@ -95,10 +95,16 @@ public class AppInfo extends CordovaPlugin {
 
     }
 
-    private void getSystemWebViewUserAgent(CallbackContext callbackContext) {
+    private void getSystemWebViewUserAgent(final CallbackContext callbackContext) {
 
-		WebView webview = new WebView(this.cordova.getActivity());
-        callbackContext.success(webview.getSettings().getUserAgentString());
+        final CordovaPlugin plugin = this;
+        this.cordova.getActivity().runOnUiThread(new Runnable() {
+            public void run() {
+                WebView webview = new WebView(plugin.cordova.getActivity());
+                callbackContext.success(webview.getSettings().getUserAgentString());
+            }
+        });
+
 
     }
 }
