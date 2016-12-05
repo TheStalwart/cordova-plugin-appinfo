@@ -76,5 +76,15 @@ appInfo.prototype.getSystemWebViewUserAgent = function(success, fail){
     exec(success, fail, 'AppInfo', 'getSystemWebViewUserAgent', []);
 }
 
+/**
+ * Get GL_RESET_NOTIFICATION_STRATEGY_ARB.
+ *
+ * @param {Function} success    Callback method called on success.
+ * @param {Function} fail       Callback method called on failure.
+ */
+appInfo.prototype.getResetNotificationStrategy = function(success, fail){
+    exec(success, fail, 'AppInfo', 'getResetNotificationStrategy', []);
+}
+
 module.exports = new appInfo();
 
